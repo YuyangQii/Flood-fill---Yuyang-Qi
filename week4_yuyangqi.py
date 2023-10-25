@@ -29,18 +29,18 @@ def flood_fill(input_board: List[str], old: str, new: str, x: int, y: int) -> Li
     # Convert each row of characters to a list
     board = [list(row) for row in input_board]
 
-    def fill(x: int, y: int):
+    def change(x: int, y: int):
         if x < 0 or x >= len(board[0]) or y < 0 or y >= len(board):
             return
         if board[y][x] == old:
             board[y][x] = new
     # Recursive calls to fill the surrounding areas
-            fill(x + 1, y)
-            fill(x - 1, y)
-            fill(x, y + 1)
-            fill(x, y - 1)
+            change(x + 1, y)
+            change(x - 1, y)
+            change(x, y + 1)
+            change(x, y - 1)
 
-    fill(x, y)
+    change(x, y)
     # Convert each row back from a list to a string
     return [''.join(row) for row in board]
 
